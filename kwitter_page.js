@@ -15,7 +15,8 @@ roomname = localStorage.getItem("roomname")
 
 function send() {
     msg = document.getElementById("msg").value
-    firebase.database().ref("roomname").push({ name: username, message: msg, like: 0 })
+    console.log(roomname)
+    firebase.database().ref(roomname).push({ name: username, message: msg, like: 0 })
     document.getElementById("msg").value = ""
 }
 
@@ -57,7 +58,7 @@ function updateLike(message_id) {
 }
 
 function logout() {
-    localStorage.removeItem(username);
-    localStorage.removeItem(roomname)
+    localStorage.removeItem("username");
+    localStorage.removeItem("roomname")
     window.location.replace("index.html")
 }

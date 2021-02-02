@@ -20,15 +20,15 @@ function adduser() {
 }
 
 function logout() {
-    localStorage.removeItem(username);
-    localStorage.removeItem(roomname)
+    localStorage.removeItem("username");
+    localStorage.removeItem("roomname")
     window.location = "index.html";
 }
 
 function addRoom() {
     roomname = document.getElementById("room_name").value
     firebase.database().ref("/").child(roomname).update({ purpose: "addingroomname" })
-    localStorage.setItem("room_name", roomname)
+    localStorage.setItem("roomname", roomname)
     window.location = "kwitterpage.html"
 }
 
@@ -43,7 +43,7 @@ function getData() {
                     childKey = childSnapshot.key;
                     Room_names = childKey;
                     console.log("roomname" + Room_names)
-                    row = "<div class= roomname id=" + Room_names + "onclick = redirecttoroomname(this.id)> #" + Room_names + "</div> <hr>"
+                    row = "<div class= 'roomname' id=" + Room_names + "onclick = 'redirecttoroomname(this.id)'>#" + Room_names + "</div><hr>"
                     document.getElementById("Output").innerHTML += row
 
                 });
